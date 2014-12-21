@@ -303,12 +303,12 @@ class Story(object):
                         # html of comment, may not be valid
                         try:
                             pat = re.compile(
-                                r'<span class="comment"><font color=".*">(.*)</font></span>')
+                                r'<span class="comment"><font color="[^"]*">(.*)</font></span>')
                             body_html = re.match(pat, str(spans[1]).replace(
                                 '\n', '')).groups()[0]
                         except AttributeError:
                             pat = re.compile(
-                                r'<span class="comment"><font color=".*">(.*)</font></p><p><font size="1">')
+                                r'<span class="comment"><font color="[^"]*">(.*)</font></p><p><font size="1">')
                             body_html = re.match(pat, str(spans[1]).replace(
                                 '\n', '')).groups()[0]
 

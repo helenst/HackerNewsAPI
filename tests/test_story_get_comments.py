@@ -63,6 +63,15 @@ class TestStoryGetComments(unittest.TestCase):
         self.assertTrue(bool(comment.body))
         self.assertTrue(bool(comment.body_html))
 
+    def test_comment_body_html(self):
+        """
+        Tests for both html and plaintext content in body html
+        """
+        comment = self.comments[0].body_html
+        self.assertEqual(comment.index("Healthcare.gov"), 0)
+        self.assertGreaterEqual(comment.find(
+            '<a href="https://news.ycombinator.com/item?id=7312442"'), 0)
+
     def test_get_nested_comments(self):
         comment = self.comments[0].body
         self.assertEqual(comment.index("Healthcare.gov"), 0)
